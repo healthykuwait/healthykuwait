@@ -679,6 +679,26 @@
       </div>
     </section>
 
+    <section class="section" id="contact">
+      <div class="container" style="max-width: 720px;">
+        <div class="section-head">
+          <span class="badge">Contact Us</span>
+          <h2>Send us your message</h2>
+          <p>Have questions or ideas? Drop us a message and we will reply soon.</p>
+        </div>
+
+        <article class="card" style="padding: 24px;">
+          <form id="contact-form">
+            <input class="form-control" type="text" id="contact-name" placeholder="Your full name" required>
+            <input class="form-control" type="email" id="contact-email" placeholder="Your email" required>
+            <textarea class="form-control" id="contact-message" placeholder="Your message" rows="5" required style="resize: vertical;"></textarea>
+            <button class="btn btn-primary" type="submit" style="margin-top: 10px;">Send Message</button>
+            <p id="contact-success" style="color: var(--primary-dark); font-weight: 700; margin-top: 12px; display: none;">Thank you! Your message was sent.</p>
+          </form>
+        </article>
+      </div>
+    </section>
+
     <section class="cta" id="join">
       <div class="container">
         <div class="cta-panel">
@@ -785,6 +805,29 @@
         backToTop.addEventListener('click', e => {
           e.preventDefault();
           document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      const contactForm = document.getElementById('contact-form');
+      const contactSuccess = document.getElementById('contact-success');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('contact-name').value;
+          const email = document.getElementById('contact-email').value;
+          const message = document.getElementById('contact-message').value;
+
+          if (!name || !email || !message) return;
+
+          contactSuccess.style.display = 'block';
+          contactSuccess.textContent = 'Thank you, ' + name + '! Your message has been received. We will respond to ' + email + ' shortly.';
+
+          contactForm.reset();
+
+          setTimeout(() => {
+            contactSuccess.style.display = 'none';
+          }, 5000);
         });
       }
 
