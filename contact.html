@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthy Kuwait | Contact Us</title>
+  <style>
+    :root {
+      --bg: #f7fbf8;
+      --surface: #ffffff;
+      --border: #d7e7dc;
+      --text: #173126;
+      --muted: #5f776c;
+      --primary: #1f8f5f;
+      --shadow: 0 12px 30px rgba(21, 64, 45, 0.08);
+      --radius: 20px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, Helvetica, sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+
+    .topbar { position: sticky; top: 0; z-index: 50; background: rgba(247, 251, 248, 0.88); border-bottom: 1px solid rgba(215, 231, 220, 0.85); }
+    .nav { max-width: var(--max); margin: 0 auto; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; }
+    .brand-mark { width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; background: linear-gradient(135deg, var(--primary), #38b27c); color: white; font-weight: 800; }
+    .nav-links { display: flex; gap: 15px; }
+    .nav-cta { padding: 10px 14px; border-radius: 999px; background: var(--primary); color: #fff; font-weight: 700; }
+
+    .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; padding: 50px 0; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); max-width: 640px; margin: 0 auto; }
+    .card h2 { margin-bottom: 12px; }
+    .card p { color: var(--muted); margin-bottom: 18px; }
+
+    .form-control { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; }
+    .form-control textarea { min-height: 120px; }
+
+    .btn { width: 100%; padding: 12px 0; border-radius: 999px; border: none; background: var(--primary); color: #fff; font-weight: 700; cursor: pointer; }
+    .success { margin-top: 14px; color: var(--primary); font-weight: 700; display: none; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">HK</span>
+        <span>Healthy Kuwait</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="signin.html" class="nav-cta">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>Contact Us</h2>
+      <p>Do you have questions, feedback, or suggestions? Please fill out the form and we will get back to you soon.</p>
+      <form id="contact-form">
+        <input class="form-control" type="text" id="name" placeholder="Full name" required>
+        <input class="form-control" type="email" id="email" placeholder="Email address" required>
+        <textarea class="form-control" id="message" placeholder="Your message" required></textarea>
+        <button class="btn" type="submit">Submit</button>
+      </form>
+      <p id="success" class="success">Thanks! We received your message.</p>
+    </article>
+  </main>
+
+  <script>
+    const contactForm = document.getElementById('contact-form');
+    const successMsg = document.getElementById('success');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        successMsg.textContent = 'Please complete all fields before submitting.';
+        successMsg.style.color = '#d64545';
+        successMsg.style.display = 'block';
+        return;
+      }
+
+      successMsg.textContent = 'Thanks ' + name + '! We received your message and will contact ' + email + ' shortly.';
+      successMsg.style.color = 'var(--primary)';
+      successMsg.style.display = 'block';
+      contactForm.reset();
+
+      setTimeout(() => successMsg.style.display = 'none', 6000);
+    });
+  </script>
+</body>
+</html>
