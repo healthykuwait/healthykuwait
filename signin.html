@@ -28,8 +28,32 @@
     .nav { max-width: var(--max); margin: 0 auto; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; }
     .brand-mark { width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; background: linear-gradient(135deg, var(--primary), #38b27c); color: white; font-weight: 800; }
-    .nav-links { display: flex; gap: 15px; }
-    .nav-cta { padding: 10px 14px; border-radius: 999px; background: var(--primary); color: #fff; font-weight: 700; }
+    .nav-links { display: flex; gap: 12px; align-items: center; }
+    .nav-link {
+      color: var(--text);
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+      background: rgba(31, 143, 95, 0.08);
+    }
+    .nav-link:hover {
+      color: #fff;
+      background: var(--primary);
+    }
+    .nav-cta {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(31, 143, 95, 0.25);
+      transition: 0.2s ease;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(31, 143, 95, 0.30);
+    }
 
     .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; padding: 40px 0; }
     .signin-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); max-width: 500px; margin: 0 auto; }
@@ -50,7 +74,8 @@
         <span>Healthy Kuwait</span>
       </a>
       <nav class="nav-links">
-        <a href="index.html" class="nav-cta">Home</a>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="contact.html" class="nav-cta">Contact</a>
       </nav>
     </div>
   </header>
