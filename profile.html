@@ -637,7 +637,7 @@
         <a href="signin.html" class="nav-cta">Sign In</a>
       </nav>
       <div class="profile-area">
-        <span class="profile-name">Aisha • Member</span>
+        <span class="profile-name" id="profile-name">Member</span>
         <a class="profile-settings" href="#">Settings</a>
       </div>
     </div>
@@ -695,7 +695,7 @@
     <section class="section" id="profile-summary">
       <div class="container">
         <div class="card">
-          <h3>Welcome, Aisha!</h3>
+          <h3 id="welcome-message">Welcome!</h3>
           <p>You are now signed in as a Healthy Kuwait campaign member. Your progress and settings are shown here.</p>
           <ul class="list">
             <li>Username: aisha.almadani</li>
@@ -865,6 +865,13 @@
     document.addEventListener('DOMContentLoaded', () => {
       const counters = document.querySelectorAll('.countup');
       const revealItems = document.querySelectorAll('.section, .hero-card, .metric, .issue-box, .card, .cta-panel');
+
+      // Load user name from localStorage
+      const userName = localStorage.getItem('userName') || 'User';
+      const profileNameEl = document.getElementById('profile-name');
+      const welcomeEl = document.getElementById('welcome-message');
+      if (profileNameEl) profileNameEl.textContent = `${userName} • Member`;
+      if (welcomeEl) welcomeEl.textContent = `Welcome, ${userName}!`;
 
       revealItems.forEach(el => el.classList.add('reveal'));
 

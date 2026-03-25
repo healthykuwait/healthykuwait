@@ -57,6 +57,7 @@
       <h2>Sign In to Join the Campaign</h2>
       <p style="margin-bottom: 16px; color: var(--muted);">Verify you are not a robot and agree to terms to continue.</p>
       <form id="signup-form">
+        <input class="form-control" type="text" id="name" placeholder="Full name" required>
         <input class="form-control" type="email" id="email" placeholder="Email address" required>
         <input class="form-control" type="password" id="password" placeholder="Password" required>
         <label class="form-checkbox"><input type="checkbox" id="notRobot"> I’m not a robot</label>
@@ -83,6 +84,8 @@
     signupForm.addEventListener('submit', (e) => {
       e.preventDefault();
       if (!notRobot.checked || !agreeTerms.checked) return;
+      const name = document.getElementById('name').value;
+      localStorage.setItem('userName', name);
       window.location.href = 'profile.html';
     });
   </script>
